@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your Shopping Cart</title>
+<meta charset="utf-8" />
+<link rel="icon" href="bag.svg">
+<link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.store.js"></script>
+</head>
+
+<body id="cart-page">
+
+
+<div id="site">
+	<header id="masthead">
+		<h1></h1>
+	</header>
+	<div id="content">
+		<h1>Your Shopping Cart</h1>
+		<form id="shopping-cart" action="/carte" method="post">
+			<table class="shopping-cart">
+			  <thead>
+				<tr>
+					<th scope="col">Item</th>
+					<th scope="col">Qty</th>
+					<th scope="col">Price</th>
+				</tr>
+			  </thead>
+			  <tbody>
+
+					<% for(var i=0; i<list.length && list[i].quantity!=0;i++){ %>
+						<tr>
+							<td scope="col"><input type="text" class="cart-table" name="x" value="<%= list[i].item_name %>" readonly/></td>
+							<td scope="col"><input type="number" class="cart-quantity" name="y" size=2 value= "<%= list[i].quantity%>" /></td></form>
+							<td scope="col" class="cart-table">$<%= list[i].price*list[i].quantity%></td>
+						</tr>
+
+					<%    };  %>
+			  </tbody>
+			</table>
+			<p id="sub-total">
+				<strong>Sub Total</strong>: <span id="stotal">$<%= total %></span>
+			</p>
+			<ul id="shopping-cart-actions">
+				<li>
+					<input type="submit" name="z" id="update-cart" class="btn" value="Update_Cart" />
+				</li>
+				<li>
+					<input type="submit" name="z" id="empty-cart" class="btn" value="Empty_Cart" />
+				</li>
+				<li>
+					<a href="/index" class="btn">Continue Shopping</a>
+				</li>
+				<li class="li-checkout">
+					<a href="/checkout" class="btn">Go To Checkout</a>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
+</body>
+<footer id="site-info">
+		Copyright &copy;
+	</footer>
+</html>
